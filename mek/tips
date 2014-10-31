@@ -1,0 +1,18 @@
+up vote 96 down vote accepted
+	
+
+Deal exclusively with unicode objects as much as possible by decoding things to unicode objects when you first get them and encoding them as necessary on the way out.
+
+If your string is actually a unicode object, you'll need to convert it to a unicode-encoded string object before writing it to a file:
+
+foo = u'Δ, Й, ק, ‎ م, ๗, あ, 叶, 葉, and 말.'
+f = open('test', 'w')
+f.write(foo.encode('utf8'))
+f.close()
+
+When you read that file again, you'll get a unicode-encoded string that you can decode to a unicode object:
+
+f = file('test', 'r')
+print f.read().decode('utf8')
+
+
