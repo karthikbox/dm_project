@@ -16,6 +16,7 @@ def add_reviews(f,G):
         G.node[r['business_id']]['type']=2
         G.node[count]['weight']=1
         G.node[count]['date']=r['date']
+        G.node[count]['stars']=r['stars']
         G.node[r['user_id']]['weight']=1
         G.node[r['business_id']]['weight']=1
         #print G.node[r['user_id']]
@@ -28,8 +29,8 @@ if __name__ == '__main__':
     print 'hi'
     data_dir="/home/karthik/yelp/mek/yelp_dataset_challenge_academic_dataset"
     data_gen_dir="/home/karthik/yelp/mek/data_generated"
-    #f_review=open(os.path.join(data_dir,"yelp_academic_dataset_review.json"),'r')
-    f_review=open(os.path.join(data_dir,"test_review.json"),'r')
+    f_review=open(os.path.join(data_dir,"yelp_academic_dataset_review.json"),'r')
+    #f_review=open(os.path.join(data_dir,"test_review.json"),'r')
     #f=open(os.path.join(data_dir,"test_review.json"),'w')
 #    for i in range(10):
 #        line=f_review.readline()
@@ -45,7 +46,7 @@ if __name__ == '__main__':
     #         print c,' ',n[0]
     #         c+=1
 
-    #nx.write_gml(G,os.path.join(data_gen_dir,"wang_graph.gml"))
-    #nx.write_gml(G,os.path.join(data_gen_dir,"wang_graph.gml"))
-    print G.nodes()
+    #nx.write_gml(G,os.path.join(data_gen_dir,"wang_graph_test.gml"))
+    nx.write_gml(G,os.path.join(data_gen_dir,"wang_graph.gml"))
+    #print G.nodes()
     f_review.close()
